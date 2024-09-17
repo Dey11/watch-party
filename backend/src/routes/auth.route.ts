@@ -1,10 +1,11 @@
 import { Request, Response, Router } from "express";
+import { login, signUp } from "../controllers/auth.controller";
 
 const authRouter = Router();
 
-authRouter.get("/signin", (req: Request, res: Response) => {});
+authRouter.post("/signup", signUp);
 
-authRouter.get("/login", (req: Request, res: Response) => {});
+authRouter.post("/login", login);
 
 authRouter.get("/logout", (req: Request, res: Response) => {});
 
