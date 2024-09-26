@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,40 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} dark`}>
+        <header className="border-b border-gray-800">
+          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+            <Link href="/" className="text-2xl font-bold text-orange-500">
+              WatchParty
+            </Link>
+            <nav className="flex items-center space-x-4">
+              <Link
+                href="/"
+                className="text-sm font-medium hover:text-orange-400 transition-colors"
+              >
+                Home
+              </Link>
+              <Button
+                asChild
+                variant="ghost"
+                className="text-sm font-medium hover:text-orange-400 transition-colors"
+              >
+                <Link href="/create">Create Room</Link>
+              </Button>
+            </nav>
+          </div>
+        </header>
+        <main className="flex-grow container mx-auto px-4 py-8">
+          {children}
+        </main>
+        <footer className="border-t border-gray-800">
+          <div className="container mx-auto px-4 h-16 flex items-center justify-center">
+            <p className="text-sm text-gray-500">
+              © 2023 WatchParty. All rights reserved.
+            </p>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
